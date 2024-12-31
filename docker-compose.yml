@@ -1,0 +1,17 @@
+version: "3.7"
+
+x-app: &app
+  depends_on:
+    - stable-diffusion
+  volumes:
+    - .:/stable-diffusion:cached
+
+services:
+  stable-diffusion:
+    restart: always
+    build: ./stable-diffusion
+    container_name: 'python3'
+    working_dir: '/app'
+    tty: true
+    volumes:
+      - ./stable-diffusion:/app
